@@ -1,0 +1,179 @@
+{
+  "name": "HAILEI4T Instructional Agent Orchestration",
+  "nodes": [
+    {
+      "parameters": {
+        "prompt": "Agent Task: HAILEI4T (ChatGPT MCP)",
+        "model": "gpt-4"
+      },
+      "name": "HAILEI4T (ChatGPT MCP)",
+      "type": "n8n-nodes-base.openai",
+      "typeVersion": 1,
+      "position": [
+        200,
+        300
+      ],
+      "id": 1
+    },
+    {
+      "parameters": {
+        "prompt": "Agent Task: IPDAi - Instructional Planning",
+        "model": "gpt-4"
+      },
+      "name": "IPDAi - Instructional Planning",
+      "type": "n8n-nodes-base.openai",
+      "typeVersion": 1,
+      "position": [
+        400,
+        300
+      ],
+      "id": 2
+    },
+    {
+      "parameters": {
+        "prompt": "Agent Task: CAuthAi - Content Authoring",
+        "model": "gpt-4"
+      },
+      "name": "CAuthAi - Content Authoring",
+      "type": "n8n-nodes-base.openai",
+      "typeVersion": 1,
+      "position": [
+        600,
+        300
+      ],
+      "id": 3
+    },
+    {
+      "parameters": {
+        "prompt": "Agent Task: TFDAi - Technical Design",
+        "model": "gpt-4"
+      },
+      "name": "TFDAi - Technical Design",
+      "type": "n8n-nodes-base.openai",
+      "typeVersion": 1,
+      "position": [
+        800,
+        300
+      ],
+      "id": 4
+    },
+    {
+      "parameters": {
+        "prompt": "Agent Task: EditorAi - Enhancement",
+        "model": "gpt-4"
+      },
+      "name": "EditorAi - Enhancement",
+      "type": "n8n-nodes-base.openai",
+      "typeVersion": 1,
+      "position": [
+        1000,
+        300
+      ],
+      "id": 5
+    },
+    {
+      "parameters": {
+        "prompt": "Agent Task: EthosAi - Ethical Oversight",
+        "model": "gpt-4"
+      },
+      "name": "EthosAi - Ethical Oversight",
+      "type": "n8n-nodes-base.openai",
+      "typeVersion": 1,
+      "position": [
+        1200,
+        300
+      ],
+      "id": 6
+    },
+    {
+      "parameters": {
+        "prompt": "Agent Task: SearchAi - Semantic Enrichment",
+        "model": "gpt-4"
+      },
+      "name": "SearchAi - Semantic Enrichment",
+      "type": "n8n-nodes-base.openai",
+      "typeVersion": 1,
+      "position": [
+        1400,
+        300
+      ],
+      "id": 7
+    }
+  ],
+  "connections": {
+    "1": {
+      "main": [
+        [
+          {
+            "node": "2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "2": {
+      "main": [
+        [
+          {
+            "node": "3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "3": {
+      "main": [
+        [
+          {
+            "node": "4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "4": {
+      "main": [
+        [
+          {
+            "node": "5",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "5": {
+      "main": [
+        [
+          {
+            "node": "6",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "6": {
+      "main": [
+        [
+          {
+            "node": "7",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "timezone": "America/New_York",
+    "saveDataErrorExecution": false,
+    "saveDataSuccessExecution": false,
+    "executionTimeout": 300
+  },
+  "active": false,
+  "versionId": "175423544137588"
+}

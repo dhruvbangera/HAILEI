@@ -1,0 +1,249 @@
+{
+  "name": "HAILEI Production Workflow - Render Deployment",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [240, 300],
+      "id": "1"
+    },
+    {
+      "parameters": {
+        "url": "https://hailei-agents.onrender.com/ipdai",
+        "options": {
+          "bodyContentType": "json",
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        },
+        "bodyParametersJson": "{\n  \"course_title\": \"Introduction to Artificial Intelligence\",\n  \"course_description\": \"A comprehensive introduction to AI concepts and applications\",\n  \"course_level\": \"Introductory\",\n  \"course_domain\": \"Computer Science\",\n  \"goals\": [\n    \"Understand AI fundamentals\",\n    \"Evaluate AI applications\",\n    \"Develop AI literacy\"\n  ],\n  \"weeks\": 6\n}"
+      },
+      "name": "IPDAi Agent",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [460, 300],
+      "id": "2"
+    },
+    {
+      "parameters": {
+        "url": "https://hailei-agents.onrender.com/cauthai",
+        "options": {
+          "bodyContentType": "json",
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        },
+        "bodyParametersJson": "={{ JSON.stringify($json) }}"
+      },
+      "name": "CAuthAi Agent",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [680, 300],
+      "id": "3"
+    },
+    {
+      "parameters": {
+        "url": "https://hailei-agents.onrender.com/searchai",
+        "options": {
+          "bodyContentType": "json",
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        },
+        "bodyParametersJson": "={{ JSON.stringify($json) }}"
+      },
+      "name": "SearchAi Agent",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [900, 300],
+      "id": "4"
+    },
+    {
+      "parameters": {
+        "url": "https://hailei-agents.onrender.com/tfdai",
+        "options": {
+          "bodyContentType": "json",
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        },
+        "bodyParametersJson": "={{ JSON.stringify($json) }}"
+      },
+      "name": "TFDAi Agent",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [1120, 300],
+      "id": "5"
+    },
+    {
+      "parameters": {
+        "url": "https://hailei-agents.onrender.com/editorai",
+        "options": {
+          "bodyContentType": "json",
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        },
+        "bodyParametersJson": "={{ JSON.stringify($json) }}"
+      },
+      "name": "EditorAi Agent",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [1340, 300],
+      "id": "6"
+    },
+    {
+      "parameters": {
+        "url": "https://hailei-agents.onrender.com/ethosai",
+        "options": {
+          "bodyContentType": "json",
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        },
+        "bodyParametersJson": "={{ JSON.stringify($json) }}"
+      },
+      "name": "EthosAi Agent",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [1560, 300],
+      "id": "7"
+    },
+    {
+      "parameters": {
+        "keepOnlySet": false,
+        "values": {
+          "string": [
+            {
+              "name": "workflow_complete",
+              "value": "HAILEI Complete 6-Agent Workflow - Production"
+            },
+            {
+              "name": "course_title",
+              "value": "={{ $json.course_title }}"
+            },
+            {
+              "name": "deployment_status",
+              "value": "={{ $json.final_approval ? $json.final_approval.ready_for_deployment : 'unknown' }}"
+            },
+            {
+              "name": "ethical_clearance",
+              "value": "={{ $json.final_approval ? $json.final_approval.ethical_clearance : 'unknown' }}"
+            },
+            {
+              "name": "quality_score",
+              "value": "={{ $json.audit_trail ? 'comprehensive_audit_complete' : 'basic_quality_check' }}"
+            },
+            {
+              "name": "generated_date",
+              "value": "={{ new Date().toISOString() }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Format Final Output",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [1780, 300],
+      "id": "8"
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "IPDAi Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IPDAi Agent": {
+      "main": [
+        [
+          {
+            "node": "CAuthAi Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CAuthAi Agent": {
+      "main": [
+        [
+          {
+            "node": "SearchAi Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SearchAi Agent": {
+      "main": [
+        [
+          {
+            "node": "TFDAi Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "TFDAi Agent": {
+      "main": [
+        [
+          {
+            "node": "EditorAi Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EditorAi Agent": {
+      "main": [
+        [
+          {
+            "node": "EthosAi Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EthosAi Agent": {
+      "main": [
+        [
+          {
+            "node": "Format Final Output",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "timezone": "America/New_York"
+  },
+  "active": false
+}

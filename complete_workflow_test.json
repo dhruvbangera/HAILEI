@@ -1,0 +1,289 @@
+{
+  "workflow_test": "HTTP endpoints",
+  "timestamp": "2025-08-05T21:23:14.834343",
+  "course_title": "Introduction to Artificial Intelligence",
+  "agents_tested": [
+    "IPDAi",
+    "CAuthAi",
+    "SearchAi"
+  ],
+  "ipdai_output": {
+    "agent": "IPDAi",
+    "status": "completed",
+    "course_title": "Introduction to Artificial Intelligence",
+    "course_info": {
+      "title": "Introduction to Artificial Intelligence",
+      "description": "A comprehensive introduction to AI for non-technical learners",
+      "level": "Introductory",
+      "goals": [
+        "Understand core AI concepts",
+        "Evaluate AI applications across industries",
+        "Develop AI literacy skills"
+      ],
+      "weeks": 6
+    },
+    "learning_objectives": {
+      "tlo": "Students will analyze AI concepts, evaluate machine learning applications, and create intelligent solutions for real-world problems.",
+      "elo": "\u2022 Identify types of machine learning algorithms\n\u2022 Explain neural network fundamentals\n\u2022 Evaluate AI applications across industries\n\u2022 Analyze ethical implications of AI systems\n\u2022 Communicate AI concepts to diverse audiences"
+    },
+    "pedagogical_frameworks": {
+      "kdka": {
+        "knowledge": "AI fundamentals, machine learning types, neural networks, ethics",
+        "delivery": "Interactive demos, case studies, hands-on AI tools",
+        "context": "Real AI applications in healthcare, business, technology",
+        "assessment": "AI tool projects, case analysis, ethical discussions"
+      },
+      "prrr": {
+        "personal": "Career opportunities in AI and tech industry",
+        "relatable": "Everyday AI (Siri, Netflix, GPS), social media algorithms",
+        "relative": "Progressive understanding from basics to applications",
+        "realworld": "Industry case studies, AI tool usage, career pathways"
+      }
+    },
+    "course_modules": [
+      {
+        "module_number": 1,
+        "title": "AI Fundamentals & History",
+        "objectives": "Students will master key concepts in AI fundamentals and apply them practically",
+        "activities": "Interactive sessions, hands-on exercises, case studies related to AI fundamentals",
+        "assessment": "Formative quiz, practical project, peer discussion on AI fundamentals"
+      },
+      {
+        "module_number": 2,
+        "title": "Machine Learning Types & Applications",
+        "objectives": "Students will master key concepts in machine learning and apply them practically",
+        "activities": "Interactive sessions, hands-on exercises, case studies related to machine learning",
+        "assessment": "Formative quiz, practical project, peer discussion on machine learning"
+      }
+    ],
+    "metadata": {
+      "generated_date": "2025-08-05T21:23:14.817161",
+      "agent_version": "1.0",
+      "processing_time": "2.3s"
+    }
+  },
+  "cauthai_output": {
+    "agent": "CAuthAi",
+    "status": "completed",
+    "course_title": "Introduction to Artificial Intelligence",
+    "source_agent": "IPDAi",
+    "detailed_modules": [
+      {
+        "module_number": 1,
+        "title": "AI Fundamentals & History",
+        "objectives": "Students will master key concepts in AI fundamentals and apply them practically",
+        "detailed_content": {
+          "lecture_notes": "Comprehensive lecture notes covering AI Fundamentals & History with theoretical foundations and practical examples aligned with PRRR framework.",
+          "activities": [
+            "Interactive workshop on AI Fundamentals & History",
+            "Case study analysis related to AI Fundamentals & History",
+            "Hands-on project applying AI Fundamentals & History concepts"
+          ],
+          "assessments": [
+            "Formative quiz on AI Fundamentals & History fundamentals",
+            "Practical project demonstrating AI Fundamentals & History skills",
+            "Peer discussion forum on AI Fundamentals & History applications"
+          ],
+          "readings": [
+            "Required textbook chapter on AI Fundamentals & History",
+            "Supplementary articles on AI Fundamentals & History trends",
+            "Case studies in AI Fundamentals & History applications"
+          ]
+        },
+        "prrr_alignment": {
+          "personal": "Connect AI Fundamentals & History to student career goals",
+          "relatable": "Use everyday examples of AI Fundamentals & History",
+          "relative": "Show how AI Fundamentals & History supports course objectives",
+          "realworld": "Industry applications of AI Fundamentals & History"
+        }
+      },
+      {
+        "module_number": 2,
+        "title": "Machine Learning Types & Applications",
+        "objectives": "Students will master key concepts in machine learning and apply them practically",
+        "detailed_content": {
+          "lecture_notes": "Comprehensive lecture notes covering Machine Learning Types & Applications with theoretical foundations and practical examples aligned with PRRR framework.",
+          "activities": [
+            "Interactive workshop on Machine Learning Types & Applications",
+            "Case study analysis related to Machine Learning Types & Applications",
+            "Hands-on project applying Machine Learning Types & Applications concepts"
+          ],
+          "assessments": [
+            "Formative quiz on Machine Learning Types & Applications fundamentals",
+            "Practical project demonstrating Machine Learning Types & Applications skills",
+            "Peer discussion forum on Machine Learning Types & Applications applications"
+          ],
+          "readings": [
+            "Required textbook chapter on Machine Learning Types & Applications",
+            "Supplementary articles on Machine Learning Types & Applications trends",
+            "Case studies in Machine Learning Types & Applications applications"
+          ]
+        },
+        "prrr_alignment": {
+          "personal": "Connect Machine Learning Types & Applications to student career goals",
+          "relatable": "Use everyday examples of Machine Learning Types & Applications",
+          "relative": "Show how Machine Learning Types & Applications supports course objectives",
+          "realworld": "Industry applications of Machine Learning Types & Applications"
+        }
+      }
+    ],
+    "scorm_package": {
+      "status": "ready_for_export",
+      "modules_count": 2,
+      "estimated_size": "45MB"
+    },
+    "content_summary": {
+      "total_activities": 6,
+      "total_assessments": 6,
+      "total_readings": 6,
+      "framework_compliance": "KDKA + PRRR + TILT"
+    },
+    "metadata": {
+      "generated_date": "2025-08-05T21:23:14.826706",
+      "agent_version": "1.0",
+      "source_data_date": "2025-08-05T21:23:14.817161",
+      "processing_time": "3.7s"
+    }
+  },
+  "searchai_output": {
+    "agent": "SearchAi",
+    "status": "completed",
+    "course_title": "Introduction to Artificial Intelligence",
+    "source_agent": "CAuthAi",
+    "enriched_modules": [
+      {
+        "module_number": 1,
+        "title": "AI Fundamentals & History",
+        "objectives": "Students will master key concepts in AI fundamentals and apply them practically",
+        "detailed_content": {
+          "lecture_notes": "Comprehensive lecture notes covering AI Fundamentals & History with theoretical foundations and practical examples aligned with PRRR framework.",
+          "activities": [
+            "Interactive workshop on AI Fundamentals & History",
+            "Case study analysis related to AI Fundamentals & History",
+            "Hands-on project applying AI Fundamentals & History concepts"
+          ],
+          "assessments": [
+            "Formative quiz on AI Fundamentals & History fundamentals",
+            "Practical project demonstrating AI Fundamentals & History skills",
+            "Peer discussion forum on AI Fundamentals & History applications"
+          ],
+          "readings": [
+            "Required textbook chapter on AI Fundamentals & History",
+            "Supplementary articles on AI Fundamentals & History trends",
+            "Case studies in AI Fundamentals & History applications"
+          ]
+        },
+        "prrr_alignment": {
+          "personal": "Connect AI Fundamentals & History to student career goals",
+          "relatable": "Use everyday examples of AI Fundamentals & History",
+          "relative": "Show how AI Fundamentals & History supports course objectives",
+          "realworld": "Industry applications of AI Fundamentals & History"
+        },
+        "knowledge_sources": {
+          "academic_sources": [
+            "IEEE papers on AI Fundamentals & History",
+            "ACM Digital Library resources for AI Fundamentals & History",
+            "Nature articles related to AI Fundamentals & History"
+          ],
+          "educational_resources": [
+            "Khan Academy content on AI Fundamentals & History",
+            "Coursera courses covering AI Fundamentals & History",
+            "edX materials for AI Fundamentals & History"
+          ],
+          "industry_sources": [
+            "Industry reports on AI Fundamentals & History",
+            "Company case studies in AI Fundamentals & History",
+            "Professional blogs about AI Fundamentals & History"
+          ],
+          "multimedia": [
+            "YouTube educational videos on AI Fundamentals & History",
+            "TED talks related to AI Fundamentals & History",
+            "Interactive simulations for AI Fundamentals & History"
+          ]
+        },
+        "resource_quality": {
+          "academic_credibility": "verified",
+          "currency": "current within 2 years",
+          "accessibility": "meets WCAG 2.1 standards",
+          "licensing": "educational use approved"
+        }
+      },
+      {
+        "module_number": 2,
+        "title": "Machine Learning Types & Applications",
+        "objectives": "Students will master key concepts in machine learning and apply them practically",
+        "detailed_content": {
+          "lecture_notes": "Comprehensive lecture notes covering Machine Learning Types & Applications with theoretical foundations and practical examples aligned with PRRR framework.",
+          "activities": [
+            "Interactive workshop on Machine Learning Types & Applications",
+            "Case study analysis related to Machine Learning Types & Applications",
+            "Hands-on project applying Machine Learning Types & Applications concepts"
+          ],
+          "assessments": [
+            "Formative quiz on Machine Learning Types & Applications fundamentals",
+            "Practical project demonstrating Machine Learning Types & Applications skills",
+            "Peer discussion forum on Machine Learning Types & Applications applications"
+          ],
+          "readings": [
+            "Required textbook chapter on Machine Learning Types & Applications",
+            "Supplementary articles on Machine Learning Types & Applications trends",
+            "Case studies in Machine Learning Types & Applications applications"
+          ]
+        },
+        "prrr_alignment": {
+          "personal": "Connect Machine Learning Types & Applications to student career goals",
+          "relatable": "Use everyday examples of Machine Learning Types & Applications",
+          "relative": "Show how Machine Learning Types & Applications supports course objectives",
+          "realworld": "Industry applications of Machine Learning Types & Applications"
+        },
+        "knowledge_sources": {
+          "academic_sources": [
+            "IEEE papers on Machine Learning Types & Applications",
+            "ACM Digital Library resources for Machine Learning Types & Applications",
+            "Nature articles related to Machine Learning Types & Applications"
+          ],
+          "educational_resources": [
+            "Khan Academy content on Machine Learning Types & Applications",
+            "Coursera courses covering Machine Learning Types & Applications",
+            "edX materials for Machine Learning Types & Applications"
+          ],
+          "industry_sources": [
+            "Industry reports on Machine Learning Types & Applications",
+            "Company case studies in Machine Learning Types & Applications",
+            "Professional blogs about Machine Learning Types & Applications"
+          ],
+          "multimedia": [
+            "YouTube educational videos on Machine Learning Types & Applications",
+            "TED talks related to Machine Learning Types & Applications",
+            "Interactive simulations for Machine Learning Types & Applications"
+          ]
+        },
+        "resource_quality": {
+          "academic_credibility": "verified",
+          "currency": "current within 2 years",
+          "accessibility": "meets WCAG 2.1 standards",
+          "licensing": "educational use approved"
+        }
+      }
+    ],
+    "resource_summary": {
+      "total_sources": 24,
+      "source_types": [
+        "academic",
+        "educational",
+        "industry",
+        "multimedia"
+      ],
+      "quality_verified": true,
+      "accessibility_compliant": true
+    },
+    "metadata": {
+      "generated_date": "2025-08-05T21:23:14.833139",
+      "agent_version": "1.0",
+      "source_data_date": "2025-08-05T21:23:14.826706",
+      "processing_time": "1.8s"
+    }
+  },
+  "workflow_status": "completed",
+  "ready_for_n8n": true
+}

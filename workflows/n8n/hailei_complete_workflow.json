@@ -1,0 +1,434 @@
+{
+  "name": "HAILEI Complete Agent Orchestration",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {}
+      },
+      "name": "Start Workflow",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [200, 400],
+      "id": "start-workflow"
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:8000/ipdai",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "bodyParameters": {
+          "parameters": [
+            {
+              "name": "course_title",
+              "value": "={{ $json.course_title || \"Introduction to Artificial Intelligence\" }}"
+            },
+            {
+              "name": "course_description", 
+              "value": "={{ $json.course_description || \"A comprehensive introduction to AI concepts and applications\" }}"
+            },
+            {
+              "name": "course_level",
+              "value": "={{ $json.course_level || \"Introductory\" }}"
+            },
+            {
+              "name": "course_domain",
+              "value": "={{ $json.course_domain || \"Computer Science\" }}"
+            },
+            {
+              "name": "goals",
+              "value": "={{ $json.goals || [\"Understand AI fundamentals\", \"Evaluate AI applications\", \"Develop AI literacy\"] }}"
+            },
+            {
+              "name": "weeks",
+              "value": "={{ $json.weeks || 8 }}"
+            }
+          ]
+        },
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "name": "IPDAi - Course Planning",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [400, 400],
+      "id": "ipdai-agent"
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:8000/cauthai",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json) }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "name": "CAuthAi - Content Creation",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [600, 400],
+      "id": "cauthai-agent"
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:8000/searchai",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type", 
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json) }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "name": "SearchAi - Resource Enrichment",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [800, 400],
+      "id": "searchai-agent"
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:8000/tfdai",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json", 
+        "jsonBody": "={{ JSON.stringify($json) }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "name": "TFDAi - Technical Design",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [1000, 400],
+      "id": "tfdai-agent"
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:8000/editorai",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json) }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "name": "EditorAi - Content Review",
+      "type": "n8n-nodes-base.httpRequest", 
+      "typeVersion": 4,
+      "position": [1200, 400],
+      "id": "editorai-agent"
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:8000/ethosai",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json) }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        }
+      },
+      "name": "EthosAi - Ethical Review",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4,
+      "position": [1400, 400],
+      "id": "ethosai-agent"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "name": "Compile Final Syllabus",
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 2,
+      "position": [1600, 400],
+      "id": "compile-syllabus"
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "hailei_complete_syllabus.json",
+        "fileContent": "={{ JSON.stringify({\n  workflow: \"HAILEI Complete\",\n  generated_date: new Date().toISOString(),\n  course_title: $json.course_title,\n  status: \"completed\",\n  agents_processed: [\"IPDAi\", \"CAuthAi\", \"SearchAi\", \"TFDAi\", \"EditorAi\", \"EthosAi\"],\n  final_syllabus: $json,\n  ready_for_deployment: $json.final_approval?.ready_for_deployment || true\n}, null, 2) }}",
+        "options": {}
+      },
+      "name": "Save Complete Syllabus",
+      "type": "n8n-nodes-base.fs",
+      "typeVersion": 1,
+      "position": [1800, 400],
+      "id": "save-syllabus"
+    },
+    {
+      "parameters": {
+        "operation": "sendEmail",
+        "fromEmail": "noreply@hailei.edu",
+        "toEmail": "instructor@university.edu",
+        "subject": "HAILEI Course Generation Complete: {{ $json.course_title }}",
+        "text": "Your course '{{ $json.course_title }}' has been successfully generated using the HAILEI system.\n\nCourse Status: {{ $json.status }}\nAgents Processed: {{ $json.agents_processed.join(', ') }}\nGenerated: {{ $json.generated_date }}\n\nThe complete syllabus has been saved and is ready for review and deployment.\n\nNext Steps:\n1. Review the generated syllabus\n2. Make any necessary adjustments\n3. Deploy to your LMS platform\n\nHAILEI System",
+        "options": {}
+      },
+      "name": "Notify Completion",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2,
+      "position": [2000, 400],
+      "id": "notify-completion"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "error-condition",
+              "leftValue": "={{ $json.error }}",
+              "rightValue": "",
+              "operator": {
+                "operation": "exists",
+                "type": "boolean"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "name": "Error Handler",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [400, 600],
+      "id": "error-handler"
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "hailei_error_log.json",
+        "fileContent": "={{ JSON.stringify({\n  timestamp: new Date().toISOString(),\n  workflow: \"HAILEI Complete\",\n  error_type: \"Agent Processing Error\",\n  error_details: $json,\n  failed_at: \"Unknown Agent\"\n}, null, 2) }}",
+        "options": {}
+      },
+      "name": "Log Error",
+      "type": "n8n-nodes-base.fs",
+      "typeVersion": 1,
+      "position": [600, 600],
+      "id": "log-error"
+    }
+  ],
+  "connections": {
+    "Start Workflow": {
+      "main": [
+        [
+          {
+            "node": "IPDAi - Course Planning",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IPDAi - Course Planning": {
+      "main": [
+        [
+          {
+            "node": "CAuthAi - Content Creation",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Error Handler",
+            "type": "main",  
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CAuthAi - Content Creation": {
+      "main": [
+        [
+          {
+            "node": "SearchAi - Resource Enrichment",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SearchAi - Resource Enrichment": {
+      "main": [
+        [
+          {
+            "node": "TFDAi - Technical Design",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "TFDAi - Technical Design": {
+      "main": [
+        [
+          {
+            "node": "EditorAi - Content Review",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EditorAi - Content Review": {
+      "main": [
+        [
+          {
+            "node": "EthosAi - Ethical Review",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "EthosAi - Ethical Review": {
+      "main": [
+        [
+          {
+            "node": "Compile Final Syllabus",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Compile Final Syllabus": {
+      "main": [
+        [
+          {
+            "node": "Save Complete Syllabus",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Save Complete Syllabus": {
+      "main": [
+        [
+          {
+            "node": "Notify Completion",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Error Handler": {
+      "main": [
+        [
+          {},
+          {
+            "node": "Log Error",
+            "type": "main", 
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "timezone": "America/New_York",
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all",
+    "executionTimeout": 900,
+    "maxExecutionTimeout": 3600
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2024-01-15T00:00:00.000Z",
+      "updatedAt": "2024-01-15T00:00:00.000Z",
+      "id": "hailei-workflow",
+      "name": "HAILEI"
+    }
+  ],
+  "triggerCount": 1,
+  "active": false,
+  "versionId": "hailei-complete-v1"
+}

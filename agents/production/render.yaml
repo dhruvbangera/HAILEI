@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: hailei-agents
+    env: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: python main.py
+    envVars:
+      - key: RENDER
+        value: production
+      - key: PORT
+        sync: false
+    healthCheckPath: /health

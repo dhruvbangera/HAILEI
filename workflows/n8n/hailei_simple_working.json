@@ -1,0 +1,159 @@
+{
+  "name": "HAILEI Simple Working Workflow",
+  "nodes": [
+    {
+      "parameters": {},
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [240, 300],
+      "id": "1"
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:8000/ipdai",
+        "options": {
+          "bodyContentType": "json",
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        },
+        "bodyParametersJson": "{\n  \"course_title\": \"Introduction to Artificial Intelligence\",\n  \"course_description\": \"A comprehensive introduction to AI concepts and applications\",\n  \"course_level\": \"Introductory\",\n  \"course_domain\": \"Computer Science\",\n  \"goals\": [\n    \"Understand AI fundamentals\",\n    \"Evaluate AI applications\",\n    \"Develop AI literacy\"\n  ],\n  \"weeks\": 6\n}"
+      },
+      "name": "IPDAi Agent",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [460, 300],
+      "id": "2"
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:8000/cauthai",
+        "options": {
+          "bodyContentType": "json",
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        },
+        "bodyParametersJson": "={{ JSON.stringify($json) }}"
+      },
+      "name": "CAuthAi Agent",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [680, 300],
+      "id": "3"
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:8000/searchai",
+        "options": {
+          "bodyContentType": "json",
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        },
+        "bodyParametersJson": "={{ JSON.stringify($json) }}"
+      },
+      "name": "SearchAi Agent",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 2,
+      "position": [900, 300],
+      "id": "4"
+    },
+    {
+      "parameters": {
+        "keepOnlySet": false,
+        "values": {
+          "string": [
+            {
+              "name": "workflow_complete",
+              "value": "HAILEI 3-Agent Workflow Complete"
+            },
+            {
+              "name": "course_title",
+              "value": "={{ $json.course_title }}"
+            },
+            {
+              "name": "total_modules",
+              "value": "={{ $json.enriched_modules ? $json.enriched_modules.length : 0 }}"
+            },
+            {
+              "name": "total_resources",
+              "value": "={{ $json.resource_summary ? $json.resource_summary.total_sources : 0 }}"
+            },
+            {
+              "name": "status",
+              "value": "={{ $json.status }}"
+            },
+            {
+              "name": "generated_date",
+              "value": "={{ new Date().toISOString() }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "name": "Format Final Output",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 1,
+      "position": [1120, 300],
+      "id": "5"
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "IPDAi Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IPDAi Agent": {
+      "main": [
+        [
+          {
+            "node": "CAuthAi Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CAuthAi Agent": {
+      "main": [
+        [
+          {
+            "node": "SearchAi Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SearchAi Agent": {
+      "main": [
+        [
+          {
+            "node": "Format Final Output",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "timezone": "America/New_York"
+  },
+  "active": false
+}

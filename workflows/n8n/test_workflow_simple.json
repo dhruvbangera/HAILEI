@@ -1,0 +1,140 @@
+{
+  "name": "HAILEI Test Workflow - 3 Agents",
+  "nodes": [
+    {
+      "parameters": {
+        "options": {
+          "contentType": "json"
+        }
+      },
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [240, 300],
+      "id": "manual-trigger"
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:8000/ipdai",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        },
+        "jsonParameters": true,
+        "parametersJson": "{\n  \"course_title\": \"Introduction to Artificial Intelligence\",\n  \"course_description\": \"A comprehensive introduction to AI for non-technical learners\",\n  \"course_level\": \"Introductory\",\n  \"course_domain\": \"Computer Science\",\n  \"goals\": [\n    \"Understand core AI concepts\",\n    \"Evaluate AI applications across industries\", \n    \"Develop AI literacy skills\"\n  ],\n  \"weeks\": 6\n}"
+      },
+      "name": "IPDAi Agent",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [440, 300],
+      "id": "ipdai-agent"
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:8001/cauthai",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        },
+        "jsonParameters": true,
+        "parametersJson": "={{ JSON.stringify($json) }}"
+      },
+      "name": "CAuthAi Agent", 
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 3,
+      "position": [640, 300],
+      "id": "cauthai-agent"
+    },
+    {
+      "parameters": {
+        "url": "http://localhost:8002/searchai",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          }
+        },
+        "jsonParameters": true,
+        "parametersJson": "={{ JSON.stringify($json) }}"
+      },
+      "name": "SearchAi Agent",
+      "type": "n8n-nodes-base.httpRequest", 
+      "typeVersion": 3,
+      "position": [840, 300],
+      "id": "searchai-agent"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "fileName": "hailei_syllabus.json",
+        "fileContent": "={{ JSON.stringify($json, null, 2) }}",
+        "options": {
+          "encoding": "utf8"
+        }
+      },
+      "name": "Save Final Syllabus",
+      "type": "n8n-nodes-base.fs",
+      "typeVersion": 1,
+      "position": [1040, 300],
+      "id": "save-output"
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "IPDAi Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IPDAi Agent": {
+      "main": [
+        [
+          {
+            "node": "CAuthAi Agent",
+            "type": "main", 
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "CAuthAi Agent": {
+      "main": [
+        [
+          {
+            "node": "SearchAi Agent",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SearchAi Agent": {
+      "main": [
+        [
+          {
+            "node": "Save Final Syllabus",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "timezone": "America/New_York"
+  },
+  "active": false,
+  "versionId": "test-workflow-v1"
+}

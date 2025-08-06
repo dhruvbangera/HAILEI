@@ -1,0 +1,153 @@
+{
+  "workflow_status": "completed",
+  "agents_processed": [
+    "IPDAi",
+    "CAuthAi",
+    "SearchAi"
+  ],
+  "course_title": "Introduction to Artificial Intelligence",
+  "final_output": {
+    "agent": "SearchAi",
+    "status": "completed",
+    "course_title": "Introduction to Artificial Intelligence",
+    "source_agent": "CAuthAi",
+    "enriched_modules": [
+      {
+        "module_number": 1,
+        "title": "AI Fundamentals & History",
+        "objectives": "Students will master key concepts in AI fundamentals and apply them practically",
+        "detailed_content": {
+          "lecture_notes": "Comprehensive lecture notes covering AI Fundamentals & History with theoretical foundations and practical examples aligned with PRRR framework.",
+          "activities": [
+            "Interactive workshop on AI Fundamentals & History",
+            "Case study analysis related to AI Fundamentals & History",
+            "Hands-on project applying AI Fundamentals & History concepts"
+          ],
+          "assessments": [
+            "Formative quiz on AI Fundamentals & History fundamentals",
+            "Practical project demonstrating AI Fundamentals & History skills",
+            "Peer discussion forum on AI Fundamentals & History applications"
+          ],
+          "readings": [
+            "Required textbook chapter on AI Fundamentals & History",
+            "Supplementary articles on AI Fundamentals & History trends",
+            "Case studies in AI Fundamentals & History applications"
+          ]
+        },
+        "prrr_alignment": {
+          "personal": "Connect AI Fundamentals & History to student career goals",
+          "relatable": "Use everyday examples of AI Fundamentals & History",
+          "relative": "Show how AI Fundamentals & History supports course objectives",
+          "realworld": "Industry applications of AI Fundamentals & History"
+        },
+        "knowledge_sources": {
+          "academic_sources": [
+            "IEEE papers on AI Fundamentals & History",
+            "ACM Digital Library resources for AI Fundamentals & History",
+            "Nature articles related to AI Fundamentals & History"
+          ],
+          "educational_resources": [
+            "Khan Academy content on AI Fundamentals & History",
+            "Coursera courses covering AI Fundamentals & History",
+            "edX materials for AI Fundamentals & History"
+          ],
+          "industry_sources": [
+            "Industry reports on AI Fundamentals & History",
+            "Company case studies in AI Fundamentals & History",
+            "Professional blogs about AI Fundamentals & History"
+          ],
+          "multimedia": [
+            "YouTube educational videos on AI Fundamentals & History",
+            "TED talks related to AI Fundamentals & History",
+            "Interactive simulations for AI Fundamentals & History"
+          ]
+        },
+        "resource_quality": {
+          "academic_credibility": "verified",
+          "currency": "current within 2 years",
+          "accessibility": "meets WCAG 2.1 standards",
+          "licensing": "educational use approved"
+        }
+      },
+      {
+        "module_number": 2,
+        "title": "Machine Learning Types & Applications",
+        "objectives": "Students will master key concepts in machine learning and apply them practically",
+        "detailed_content": {
+          "lecture_notes": "Comprehensive lecture notes covering Machine Learning Types & Applications with theoretical foundations and practical examples aligned with PRRR framework.",
+          "activities": [
+            "Interactive workshop on Machine Learning Types & Applications",
+            "Case study analysis related to Machine Learning Types & Applications",
+            "Hands-on project applying Machine Learning Types & Applications concepts"
+          ],
+          "assessments": [
+            "Formative quiz on Machine Learning Types & Applications fundamentals",
+            "Practical project demonstrating Machine Learning Types & Applications skills",
+            "Peer discussion forum on Machine Learning Types & Applications applications"
+          ],
+          "readings": [
+            "Required textbook chapter on Machine Learning Types & Applications",
+            "Supplementary articles on Machine Learning Types & Applications trends",
+            "Case studies in Machine Learning Types & Applications applications"
+          ]
+        },
+        "prrr_alignment": {
+          "personal": "Connect Machine Learning Types & Applications to student career goals",
+          "relatable": "Use everyday examples of Machine Learning Types & Applications",
+          "relative": "Show how Machine Learning Types & Applications supports course objectives",
+          "realworld": "Industry applications of Machine Learning Types & Applications"
+        },
+        "knowledge_sources": {
+          "academic_sources": [
+            "IEEE papers on Machine Learning Types & Applications",
+            "ACM Digital Library resources for Machine Learning Types & Applications",
+            "Nature articles related to Machine Learning Types & Applications"
+          ],
+          "educational_resources": [
+            "Khan Academy content on Machine Learning Types & Applications",
+            "Coursera courses covering Machine Learning Types & Applications",
+            "edX materials for Machine Learning Types & Applications"
+          ],
+          "industry_sources": [
+            "Industry reports on Machine Learning Types & Applications",
+            "Company case studies in Machine Learning Types & Applications",
+            "Professional blogs about Machine Learning Types & Applications"
+          ],
+          "multimedia": [
+            "YouTube educational videos on Machine Learning Types & Applications",
+            "TED talks related to Machine Learning Types & Applications",
+            "Interactive simulations for Machine Learning Types & Applications"
+          ]
+        },
+        "resource_quality": {
+          "academic_credibility": "verified",
+          "currency": "current within 2 years",
+          "accessibility": "meets WCAG 2.1 standards",
+          "licensing": "educational use approved"
+        }
+      }
+    ],
+    "resource_summary": {
+      "total_sources": 24,
+      "source_types": [
+        "academic",
+        "educational",
+        "industry",
+        "multimedia"
+      ],
+      "quality_verified": true,
+      "accessibility_compliant": true
+    },
+    "metadata": {
+      "generated_date": "2025-08-05T21:04:51.149039",
+      "agent_version": "1.0",
+      "source_data_date": "2025-08-05T21:04:51.149009",
+      "processing_time": "1.8s"
+    }
+  },
+  "workflow_metadata": {
+    "total_processing_time": "7.8s",
+    "agents_successful": 3,
+    "data_flow_verified": true
+  }
+}

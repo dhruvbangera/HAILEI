@@ -1,0 +1,211 @@
+# HAILEI4T n8n Workflow Customization Guide
+
+This guide helps collaborators customize the imported `HAILEI4T_n8n_workflow.json` in **n8n** to align with specific course contexts, modify agent behavior, or expand integrations with external services (LMS, Notion, Google Docs, etc.).
+
+## 🧠 System Overview
+
+The HAILEI4T orchestrates 6 specialized sub-agents using the OpenAI node:
+
+- **IPDAi** – Instructional Planning
+- **CAuthAi** – Course Content Authoring
+- **TFDAi** – Technical & LMS Design
+- **EditorAi** – Content Enhancement
+- **EthosAi** – Ethical Oversight
+- **SearchAi** – Knowledge Enrichment
+
+All agents are coordinated by the parent agent: **HAILEI4T (Master Coordination Protocol)**.
+
+## 🎛️ HOW TO CUSTOMIZE PROMPTS
+
+### Step 1: Open Workflow in n8n
+
+- Go to your n8n dashboard
+- Click **Workflows > Import from file** and select `HAILEI4T_n8n_workflow.json`
+
+### Step 2: Click Each Agent Node
+
+- Find the node titled e.g., `IPDAi - Instructional Planning`
+- Click the node and scroll to **Prompt** under Parameters
+
+### Step 3: Edit Prompts
+
+You can customize for:
+
+- Subject or Module Type (STEM, Humanities, etc.)
+- Educational Level (University, K-12, Corporate)
+- Output Format (Markdown, PDF-ready)
+
+### Example: Modify CAuthAi Prompt
+
+**Original:**
+```text
+Generate PRRR + TILT-aligned learning and assessment activities, lecture notes, and a reading list.
+```
+
+**Customized:**
+```text
+Create three hands-on lab activities and two formative assessments aligned with the PRRR model and Bloom's Level 4–5. Include a 300-word reading summary using OpenStax content.
+```
+
+## 🔌 HOW TO EXPAND INTEGRATIONS
+
+### Add External Service Nodes (Optional):
+
+- **Google Docs**: Auto-generate editable lesson plans
+- **Notion**: Save enriched reading list to a shared database
+- **Airtable**: Log each module's progress and metadata
+- **Slack/Discord**: Send workflow status updates
+
+### Example: Add Google Docs Export After EditorAi
+
+1. Add a **Google Docs Node** after EditorAi
+2. Auth using your Google account
+3. Select `Create Document`
+4. Map EditorAi's output to `Document Content`
+
+## ⚖️ ETHICAL FRAMEWORK SELECTION
+
+In the EthosAi node prompt, you can insert:
+
+- UDL (Universal Design for Learning)
+- UNESCO AI Ethics Framework
+- Custom Institutional Policy
+
+### Example:
+
+```text
+Perform an ethical audit using Universal Design for Learning and the university's inclusive teaching guidelines. Highlight bias, accessibility, and equity issues.
+```
+
+## 📋 Customization Categories
+
+### Course Subject Customization
+
+| Subject Area | Recommended Changes |
+|-------------|-------------------|
+| **STEM** | Emphasize hands-on labs, calculations, scientific method |
+| **Humanities** | Focus on critical analysis, discussion forums, essays |
+| **Business** | Include case studies, real-world scenarios, ROI analysis |
+| **Arts** | Portfolio assessments, creative projects, peer critiques |
+
+### Educational Level Adjustments
+
+| Level | Key Modifications |
+|-------|------------------|
+| **K-12** | Age-appropriate language, scaffolded activities, visual aids |
+| **University** | Research components, academic rigor, citation requirements |
+| **Corporate** | Performance metrics, practical application, time efficiency |
+| **Continuing Ed** | Flexible pacing, prior experience integration, certification paths |
+
+### Output Format Options
+
+| Format | Agent Modifications |
+|--------|-------------------|
+| **LMS-Ready** | SCORM packaging, quiz formats, gradebook integration |
+| **Print Materials** | PDF layouts, formatting for handouts, printer-friendly |
+| **Interactive** | Multimedia elements, clickable content, embedded videos |
+| **Mobile-First** | Responsive design, bite-sized content, touch interfaces |
+
+## 🔧 Advanced Customization Techniques
+
+### Conditional Logic Implementation
+
+Add **IF nodes** to route content based on:
+- Subject complexity level
+- Student prerequisites
+- Assessment type requirements
+- Platform capabilities
+
+### Error Handling and Retries
+
+Implement **Error Trigger nodes** for:
+- API timeout handling
+- Content validation failures
+- Integration connectivity issues
+- Automatic retry mechanisms
+
+### Workflow Optimization
+
+Use **Wait nodes** for:
+- Rate limiting API calls
+- Staged content generation
+- User review periods
+- System processing delays
+
+## 📚 TIPS FOR FURTHER DEVELOPMENT
+
+- Use **If or Switch nodes** to route based on content type or audit outcome
+- Add delays or retries using **Wait and Error Trigger nodes**
+- Integrate **webhook triggers** to automate HAILEI4T in real-time from a form submission
+- Implement **conditional branching** based on ethical audit results
+- Add **logging nodes** to track workflow performance and outcomes
+
+## 🔄 Workflow Testing and Validation
+
+### Testing Strategies
+
+1. **Unit Testing**: Test each agent individually
+2. **Integration Testing**: Verify agent-to-agent data flow
+3. **End-to-End Testing**: Complete workflow validation
+4. **Load Testing**: Multiple concurrent executions
+
+### Validation Checkpoints
+
+- **IPDAi Output**: Verify learning objectives alignment
+- **CAuthAi Content**: Check PRRR model implementation
+- **TFDAi Specs**: Validate technical feasibility
+- **EditorAi Review**: Confirm accessibility standards
+- **EthosAi Audit**: Ensure ethical compliance
+- **SearchAi Results**: Verify source credibility
+
+## 📊 Performance Monitoring
+
+### Key Metrics to Track
+
+- **Execution Time**: Per agent and total workflow
+- **Success Rate**: Percentage of successful completions
+- **Error Frequency**: Common failure points
+- **Resource Usage**: API call consumption
+- **Output Quality**: User satisfaction scores
+
+### Monitoring Setup
+
+1. Enable n8n execution logging
+2. Set up alerts for workflow failures
+3. Track API usage and costs
+4. Monitor agent response quality
+5. Collect user feedback on outputs
+
+## 💬 Support and Community
+
+### Getting Help
+
+- **Primary Contact**: Dr. Fawzi BenMessaoud
+- **Technical Support**: n8n Community Forum
+- **Documentation**: [n8n.io/docs](https://n8n.io/docs)
+- **HAILEI Updates**: Project repository or communication channel
+
+### Contributing Improvements
+
+- Submit workflow enhancements
+- Share custom agent prompts
+- Report integration successes
+- Provide user feedback and suggestions
+
+## 🚀 Future Development Roadmap
+
+### Planned Enhancements
+
+- **Multi-language Support**: International course development
+- **Advanced Analytics**: Learning outcome prediction
+- **Adaptive Learning**: Personalized content generation
+- **Collaborative Features**: Multi-educator workflows
+- **Quality Assurance**: Automated content validation
+
+### Integration Expansion
+
+- **Additional LMS Platforms**: Blackboard, D2L, Canvas
+- **Content Repositories**: OER Commons, MIT OpenCourseWare
+- **Assessment Tools**: Respondus, ExamSoft, Turnitin
+- **Communication Platforms**: Microsoft Teams, Zoom
+- **Analytics Platforms**: Learning analytics dashboards
