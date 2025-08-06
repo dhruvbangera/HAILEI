@@ -576,13 +576,42 @@ async def complete_workflow_endpoint(course_input: CourseInput):
         workflow_end = datetime.now()
         processing_time = (workflow_end - workflow_start).total_seconds()
         
-        final_result = {
-            "workflow": "HAILEI Complete Production",
-            "status": "completed",
-            "course_title": course_input.course_title,
-            "agents_processed": ["IPDAi", "CAuthAi", "SearchAi", "TFDAi", "EditorAi", "EthosAi"],
-            "final_output": ethosai_result,
+        # Build the final course structure combining all agent outputs
+        final_course = {
+            "course_info": {
+                "title": course_input.course_title,
+                "description": course_input.course_description,
+                "level": course_input.course_level,
+                "domain": course_input.course_domain,
+                "duration_weeks": course_input.weeks,
+                "goals": course_input.goals
+            },
+            "learning_objectives": ipdai_result.get("learning_objectives", {}),
+            "pedagogical_frameworks": ipdai_result.get("pedagogical_frameworks", {}),
+            "course_modules": searchai_result.get("enriched_modules", []),
+            "technical_specifications": tfdai_result.get("technical_specifications", {}),
+            "lms_integration": tfdai_result.get("lms_mapping", {}),
+            "deployment_requirements": tfdai_result.get("integration_requirements", []),
+            "quality_assurance": {
+                "content_review": editorai_result.get("review_results", {}),
+                "enhancements_made": editorai_result.get("enhancements_made", []),
+                "quality_metrics": editorai_result.get("quality_metrics", {})
+            },
+            "ethical_compliance": {
+                "ethical_audit": ethosai_result.get("ethical_audit", {}),
+                "compliance_checklist": ethosai_result.get("compliance_checklist", {}),
+                "final_approval": ethosai_result.get("final_approval", {}),
+                "recommendations": ethosai_result.get("recommendations", [])
+            },
+            "deployment_status": {
+                "ready_for_deployment": ethosai_result.get("final_approval", {}).get("ready_for_deployment", False),
+                "ethical_clearance": ethosai_result.get("final_approval", {}).get("ethical_clearance", "pending"),
+                "quality_score": editorai_result.get("quality_metrics", {}).get("engagement_score", 0),
+                "approval_level": ethosai_result.get("final_approval", {}).get("approval_level", "pending")
+            },
             "production_metadata": {
+                "workflow": "HAILEI Complete Production",
+                "agents_processed": ["IPDAi", "CAuthAi", "SearchAi", "TFDAi", "EditorAi", "EthosAi"],
                 "deployment": "render",
                 "api_version": "1.0.0",
                 "environment": os.getenv("RENDER", "development"),
@@ -590,13 +619,11 @@ async def complete_workflow_endpoint(course_input: CourseInput):
                 "end_time": workflow_end.isoformat(),
                 "total_processing_time": f"{processing_time:.2f}s",
                 "agents_successful": 6,
-                "final_approval": ethosai_result["final_approval"]["ready_for_deployment"],
-                "quality_score": editorai_result["quality_metrics"]["engagement_score"],
-                "ethical_clearance": ethosai_result["ethical_audit"]["inclusivity_score"]
+                "generated_date": workflow_end.isoformat()
             }
         }
         
-        return final_result
+        return final_course
     
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Complete workflow error: {str(e)}")
