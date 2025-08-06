@@ -11,6 +11,7 @@
     },
     {
       "parameters": {
+        "method": "POST",
         "url": "https://hailei.onrender.com/ipdai",
         "options": {
           "bodyContentType": "json",
@@ -30,6 +31,7 @@
     },
     {
       "parameters": {
+        "method": "POST",
         "url": "https://hailei.onrender.com/cauthai",
         "options": {
           "bodyContentType": "json",
@@ -49,6 +51,7 @@
     },
     {
       "parameters": {
+        "method": "POST",
         "url": "https://hailei.onrender.com/searchai",
         "options": {
           "bodyContentType": "json",
@@ -68,6 +71,7 @@
     },
     {
       "parameters": {
+        "method": "POST",
         "url": "https://hailei.onrender.com/tfdai",
         "options": {
           "bodyContentType": "json",
@@ -87,6 +91,7 @@
     },
     {
       "parameters": {
+        "method": "POST",
         "url": "https://hailei.onrender.com/editorai",
         "options": {
           "bodyContentType": "json",
@@ -106,6 +111,7 @@
     },
     {
       "parameters": {
+        "method": "POST",
         "url": "https://hailei.onrender.com/ethosai",
         "options": {
           "bodyContentType": "json",
